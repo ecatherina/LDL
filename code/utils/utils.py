@@ -29,7 +29,8 @@ class Logger(object):
         self.file = None
 
     def open(self, file, mode=None):
-        if mode is None: mode ='w'
+        if mode is None: 
+          mode ='w'
         self.file = open(file, mode)
 
     def write(self, message, is_terminal=1, is_file=1 ):
@@ -41,8 +42,8 @@ class Logger(object):
             #time.sleep(1)
 
         if is_file == 1:
-            self.file.write(message)
-            self.file.flush()
+          self.file.write(message)
+          self.file.flush()
 
     def flush(self):
         # this flush method is needed for python 3 compatibility.

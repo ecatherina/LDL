@@ -29,14 +29,14 @@ import shutil
 
 
 # Hyper Parameters
-EPOCH = 50               # train the training data n times, to save time, we just train 1 epoch
+EPOCH = 1              # train the training data n times, to save time, we just train 1 epoch
 STEP_SIZE = 30
 BATCH_SIZE = 1
 BATCH_SIZE_TEST = 1
 LR = 0.001              # learning rate
 NUM_WORKERS = 8
 NUM_CLASSES = 4
-LOG_FILE_NAME = './logs/log_' + time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime()) + '.log'
+LOG_FILE_NAME = '/content/drive/MyDrive/openface_test_task/logs/log_' + time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime()) + '.log'
 lr_steps = [30, 60, 90, 120]
 
 np.random.seed(42)
@@ -52,7 +52,7 @@ log = Logger()
 log.open(LOG_FILE_NAME, mode="a")
 
 
-data_dir = 'doctor-results/'
+data_dir = '/content/drive/MyDrive/openface_test_task/LDL/code/doctor-results/'
 doctors = ['expert_a.txt', 'expertb2.txt', 'junior_a.txt', 'junior_b.txt', 'general_a.txt', 'general_b.txt', ]
 
 cross_val_lists = ['0']#, '1', '2', '3', '4']
@@ -85,8 +85,8 @@ for i in range(3):
     for cross_val_index in cross_val_lists:
         # log.write('\n\ncross_val_index: ' + cross_val_index + '\n\n')
 
-        TRAIN_FILE = '/home/ubuntu3/wxp/datasets/acne4/VOCdevkit2007/VOC2007/ImageSets/Main/NNEW_trainval_' + cross_val_index + '.txt'
-        TEST_FILE = '/home/ubuntu3/wxp/datasets/acne4/VOCdevkit2007/VOC2007/ImageSets/Main/NNEW_test_' + cross_val_index + '.txt'
+        TRAIN_FILE = '/content/drive/MyDrive/openface_test_task/Detection/VOC2007/ImageSets/Main/NNEW_trainval_' + cross_val_index + '.txt'
+        TEST_FILE = '/content/drive/MyDrive/openface_test_task/Detection/VOC2007/ImageSets/Main/NNEW_test_' + cross_val_index + '.txt'
 
         imgs_train, labels_train = np.loadtxt(TRAIN_FILE, dtype=np.str, usecols=[0, 1]).T
         labels_train = labels_train.astype(int)

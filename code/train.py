@@ -31,15 +31,16 @@ BATCH_SIZE_TEST = 20
 LR = 0.001              # learning rate
 NUM_WORKERS = 12
 NUM_CLASSES = 4
-LOG_FILE_NAME = './logs/log_' + time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime()) + '.log'
-lr_steps = [30, 60, 90, 120]
+LOG_FILE_NAME = '/content/drive/MyDrive/openface_test_task/logs/log_' + time.strftime("%Y-%m-%d_%H:%M:%S", time.localtime()) + '.log'
+# lr_steps = [30, 60, 90, 120]
+lr_steps = [3]
 
 np.random.seed(42)
 
-DATA_PATH = '/home/ubuntu5/wxp/datasets/acne4/VOCdevkit2007/VOC2007/JPEGImages_300'
+DATA_PATH = '/content/drive/MyDrive/openface_test_task/Classification/JPEGImages/'
 
 log = Logger()
-log.open(LOG_FILE_NAME, mode="a")
+log.open(LOG_FILE_NAME, mode="w")
 
 
 def criterion(lesions_num):
@@ -55,8 +56,8 @@ def criterion(lesions_num):
 
 def trainval_test(cross_val_index, sigma, lam):
 
-    TRAIN_FILE = '/home/ubuntu5/wxp/datasets/acne4/VOCdevkit2007/VOC2007/ImageSets/Main/NNEW_trainval_' + cross_val_index + '.txt'
-    TEST_FILE = '/home/ubuntu5/wxp/datasets/acne4/VOCdevkit2007/VOC2007/ImageSets/Main/NNEW_test_' + cross_val_index + '.txt'
+    TRAIN_FILE = '/content/drive/MyDrive/openface_test_task/Detection/VOC2007/ImageSets/Main/NNEW_trainval_' + cross_val_index + '.txt'
+    TEST_FILE = '/content/drive/MyDrive/openface_test_task/Detection/VOC2007/ImageSets/Main/NNEW_test_' + cross_val_index + '.txt'
 
     normalize = transforms.Normalize(mean=[0.45815152, 0.361242, 0.29348266],
                                      std=[0.2814769, 0.226306, 0.20132513])
@@ -146,7 +147,7 @@ def trainval_test(cross_val_index, sigma, lam):
             # train
             cnn.train()
 
-            cls, cou, cou2cls = cnn(b_x, None)nn output
+            cls, cou, cou2cls = cnn(b_x, None) #nn output
             loss_cls = kl_loss_1(torch.log(cls), ld_4) * 4.0
             loss_cou = kl_loss_2(torch.log(cou), ld) * 65.0
             loss_cls_cou = kl_loss_3(torch.log(cou2cls), ld_4) * 4.0
