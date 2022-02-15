@@ -1,4 +1,15 @@
 ## Joint Acne Image Grading and Counting via Label Distribution Learning
+
+### Update
+This repository contains updated and refactored version of original Pytorch implementation of "Joint Acne Image Grading and Counting via Label Distribution Learning". Presented version is compatible with Pytorch 1.10.2.  
+
+I refactored the code by implementing training loop and dataset wrapper using [Pytorch Lightning](https://www.pytorchlightning.ai/) and by adding improved logging using [Weights&Biases](https://wandb.ai/).
+
+Following files are added the repository as well:
+- [One page summary](https://github.com/ecatherina/LDL/blob/master/review.pdf) of the original paper with key ideas and results
+- Detailed [exploratory data analysis](https://github.com/ecatherina/LDL/blob/master/eda.ipynb) of presented in paper dataset ACNE04
+
+--------------------------------------------------------------------------
 Pytorch implementation of "Joint Acne Image Grading and Counting via Label Distribution Learning"
 
 This work was accepted by ICCV 2019 [[paper](http://xiaopingwu.cn/assets/paper/iccv2019_ldl.pdf)].
